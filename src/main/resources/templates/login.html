@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{/style/loginStyle.css}">
+    
     <title>Login page</title>
 </head>
 <body>
     <div class="main">
         <h1>Login</h1>
-        <form th:action="@{/login}" method="post">
+        <form th:action="@{/login}" method="get">
             <div class="cell">
                 <input type="email" id="email" placeholder="Email">
             </div>
@@ -24,4 +25,18 @@
     </div>
     
 </body>
+<script >
+    let btn = document.getElementById('btn');
+btn.addEventListener('click' ,verif);
+function verif(event){
+
+let email = document.getElementById("email").value;
+let password = document.getElementById("password").value;
+if(username == '' || password==''){
+    console.log("hello")
+}
+
+};
+
+</script>
 </html>
