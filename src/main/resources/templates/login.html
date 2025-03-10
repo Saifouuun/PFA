@@ -10,12 +10,12 @@
 <body>
     <div class="main">
         <h1>Login</h1>
-        <form th:action="@{/login}" method="get">
+        <form th:action="@{/login}" method="POST">
             <div class="cell">
-                <input type="email" id="email" placeholder="Email">
+                <input type="email" id="email" placeholder="Email" name="email">
             </div>
             <div class="cell">
-                <input type="password" id="password" placeholder="Password">
+                <input type="password" id="password" placeholder="Password" name="password">
             </div>
             <div class="cell">
                 <input type="submit" value="Login" id="btn">
@@ -25,18 +25,4 @@
     </div>
     
 </body>
-<script >
-    let btn = document.getElementById('btn');
-btn.addEventListener('click' ,verif);
-function verif(event){
-
-let email = document.getElementById("email").value;
-let password = document.getElementById("password").value;
-if(username == '' || password==''){
-    console.log("hello")
-}
-
-};
-
-</script>
 </html>

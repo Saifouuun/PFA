@@ -8,6 +8,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 
+
+
 @Entity
 @Table(name = "user")
 public class User {
@@ -15,8 +17,8 @@ public class User {
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @Column(name = "username")
     private String username;
     @Column(name = "email")
@@ -25,14 +27,21 @@ public class User {
     private String password;
     @Column(name = "phone")
     private String phone;
-    public User(int id, String username, String email, String password, String phone) {
-        this.id = id;
+    @Column(name = "userType")
+    private String userType;
+    public String getUserType() {
+        return userType;
+    }
+    public void setUserType(String userType) {
+        this.userType = userType;
+    }
+    public User(String username, String email, String password, String phone) {
         this.username = username;
         this.email = email;
         this.password = password;
         this.phone = phone;
     }
-    public int getId() {
+    public Long getId() {
         return id;
     }
     public String getUsername() {
@@ -47,7 +56,7 @@ public class User {
     public String getPhone() {
         return phone;
     }
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public void setUsername(String username) {
@@ -62,5 +71,5 @@ public class User {
     public void setPhone(String phone) {
         this.phone = phone;
     }
-   
+    
 }
