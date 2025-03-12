@@ -7,8 +7,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 
+
 @Entity
-public class Table {
+public class ResTable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -16,7 +17,7 @@ public class Table {
     @Column(name = "capacity")
     private int capacity;
 
-    public Table(Long id, int capacity) {
+    public ResTable(Long id, int capacity) {
         this.id = id;
         this.capacity = capacity;
     }

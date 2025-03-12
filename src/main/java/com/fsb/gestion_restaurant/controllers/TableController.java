@@ -1,13 +1,15 @@
 package com.fsb.gestion_restaurant.controllers;
 
 
+
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fsb.gestion_restaurant.models.Table;
+import com.fsb.gestion_restaurant.models.ResTable;
 import com.fsb.gestion_restaurant.service.TableService;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 
 
+
 @RestController
 @RequestMapping("/table")
 public class TableController {
@@ -27,16 +30,17 @@ public class TableController {
     TableService tableService;
 
     @PostMapping
-    public Table createTable(@RequestBody Table table) {
+    public ResTable createTable(@RequestBody ResTable table) {
         return tableService.createTable(table);
     }
-    @GetMapping("/{id}")
-    public Optional<Table> getTableById(@PathVariable Long id) {
+    @GetMapping("/table/{id}")
+    public Optional<ResTable> getTableById(@PathVariable("id") Long id) {
         return tableService.getTableById(id);
+        
     }
 
     @PutMapping
-    public Table updateUser(@RequestBody Table table) {
+    public ResTable updateUser(@RequestBody ResTable table) {
         return tableService.updateTable(table);
     }
 

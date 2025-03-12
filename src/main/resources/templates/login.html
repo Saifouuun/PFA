@@ -12,10 +12,10 @@
         <h1>Login</h1>
         <form th:action="@{/login}" method="POST">
             <div class="cell">
-                <input type="email" id="email" placeholder="Email" name="email">
+                <input type="email" id="email" placeholder="Email" name="email" required>
             </div>
             <div class="cell">
-                <input type="password" id="password" placeholder="Password" name="password">
+                <input type="password" id="password" placeholder="Password" name="password" required>
             </div>
             <div class="cell">
                 <input type="submit" value="Login" id="btn">

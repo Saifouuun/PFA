@@ -25,5 +25,6 @@ public class UserService {
     public void deleteUser(Long id) {
         repo.deleteById(id);  // Delete the user by ID from the database
     }
+    
 
 }

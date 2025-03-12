@@ -27,20 +27,14 @@ public class User {
     private String password;
     @Column(name = "phone")
     private String phone;
-    @Column(name = "userType")
-    private String userType;
-    public String getUserType() {
-        return userType;
-    }
-    public void setUserType(String userType) {
-        this.userType = userType;
-    }
+    
     public User(String username, String email, String password, String phone) {
         this.username = username;
         this.email = email;
         this.password = password;
         this.phone = phone;
     }
+    public User(){}
     public Long getId() {
         return id;
     }
