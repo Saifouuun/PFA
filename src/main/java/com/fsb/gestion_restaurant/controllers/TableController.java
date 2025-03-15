@@ -6,7 +6,6 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fsb.gestion_restaurant.models.ResTable;
@@ -33,7 +32,7 @@ public class TableController {
     public ResTable createTable(@RequestBody ResTable table) {
         return tableService.createTable(table);
     }
-    @GetMapping("/table/{id}")
+    @GetMapping("/{id}")
     public Optional<ResTable> getTableById(@PathVariable("id") Long id) {
         return tableService.getTableById(id);
         

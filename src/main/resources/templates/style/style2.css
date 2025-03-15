@@ -1,0 +1,84 @@
+body {
+    background: url("image7.jpg") no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 70vh;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+    margin-top: 10%;
+}
+
+.form-container {
+    border: 2px solid #333;
+    border-radius: 20px;
+    width: 20%;
+    backdrop-filter: blur(20px);
+}
+
+.form-container h2 {
+    text-align: center;
+}
+
+.input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.register-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#login-link {
+    text-decoration: none;
+    color: black;
+}
+
+#login-link:hover {
+    text-decoration: underline;
+}
+
+.register-button {
+    margin-bottom: 20px;
+}
+
+.register-button button {
+    background-color: white;
+    color: black;
+    width: 30%;
+    border: none;
+    border-radius: 2px;
+    transition: background-color  ease;
+}
+
+.register-button button:hover {
+    cursor: pointer;
+    background-color: rgb(171, 171, 171);
+}
+
+.input-container input {
+    border-radius: 2px;
+    outline: none;
+    width: 75%;
+    height: 25px;
+    border: none;
+    font-weight: 600;
+}
+
+.input-container i {
+    margin-left: 4px;
+}

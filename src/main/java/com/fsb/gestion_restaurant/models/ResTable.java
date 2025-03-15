@@ -21,6 +21,8 @@ public class ResTable {
         this.id = id;
         this.capacity = capacity;
     }
+    public ResTable() {
+    }
     public Long getId() {
         return id;
     }
