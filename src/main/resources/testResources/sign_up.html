@@ -9,31 +9,37 @@
 </head>
 <body>
     <div class="container" id="register-form">
-        <form action="" method="post" class="form-container">
+        <form th:action="@{/sign}" method="post" class="form-container">
             <h2>Register</h2>
 
             <div class="input-container">
-                <input type="text" placeholder="Username" required>
+                <input type="text" placeholder="Username" name="username" required>
                 <i class="bx bxs-user"></i>
             </div>
 
             <br>
 
             <div class="input-container">
-                <input type="email" placeholder="Email" required>
+                <input type="email" placeholder="Email" name="email" required>
                 <i class="bx bxs-envelope"></i>
             </div>
 
             <br>
 
             <div class="input-container">
-                <input type="password" placeholder="Password" required>
+                <input type="password" placeholder="Password" name="password" required>
                 <i class="bx bxs-lock"></i>
+            </div>
+
+            <br>
+            <div class="input-container">
+                <input type="text" placeholder="Phone" name="phone" required>
+                <i class="bx bxs-phone"></i>
             </div>
 
             <div class="login">
                 <p style="color: #fff;">Already have an account?</p>
-                <a href="index.html" id="login-link">Login</a>
+                <a th:href="@{/login}" id="login-link">Login</a>
             </div>
 
             <div class="register-button">

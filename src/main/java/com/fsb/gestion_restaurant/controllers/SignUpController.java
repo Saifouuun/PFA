@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 
@@ -31,23 +31,20 @@ public class SignUpController {
     }
     @PostMapping
     
-    public @ResponseBody String createUser(@RequestParam String username,
-                                           @RequestParam String email,
-                                           @RequestParam String password,
-                                           @RequestParam String phone ){
-        String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
-        User u = new User();
-        u.setEmail(email);
-        u.setPassword(hashedPassword);
-        u.setPhone(phone);
-        u.setUsername(username);
-        Optional<User> userEntry = userRepository.findByEmail(u.getEmail());
+    public @ResponseBody String createUser(@RequestBody User user){
+        String hashedPassword = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
+        User newUser = new User();
+        newUser.setEmail(user.getEmail());
+        newUser.setPassword(hashedPassword);
+        newUser.setPhone(user.getPhone());
+        newUser.setUsername(user.getUsername());
+        Optional<User> userEntry = userRepository.findByEmail(newUser.getEmail());
         System.err.println(userEntry);
         if (userEntry.isPresent()) {
             return "Email already existe try another one";
         }
         
-        userRepository.save(u);
+        userRepository.save(newUser);
         return "user saved";
     }
 }
