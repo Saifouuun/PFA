@@ -7,7 +7,7 @@
     <title>Login</title>
 </head>
 <body>
-    <form th:action="@{/login}" methode="POST">
+    <form th:action="@{/login}" method="POST">
         <h1>Login</h1>
         <div class="cell">
             <input type="email" name="email" id="email" placeholder="Email" required>
@@ -18,14 +18,11 @@
             <img th:src="@{images/login_sign_images/padlock.png}" alt="icon" class="icon">
         </div>
         <div class="cell">
-            <p>Create account <a th:href="@{/sign}">click here</a></p>
+            <p>Don't have an account?<a th:href="@{/sign}">Sign up</a></p>
         </div>
         <div class="cell">
             <button type="submit">Login</button>
         </div>
-
-
     </form>
-    
 </body>
 </html>

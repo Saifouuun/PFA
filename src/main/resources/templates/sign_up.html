@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{style/login-signUp.css}">
-    <title>Document</title>
+    <title>Sign up</title>
 </head>
 <body>
-    <form th:action="@{/sign}" methode="post">
+    <form th:action="@{/sign}" method="post">
         <h1>Sign Up</h1>
         <div class="cell">
             <input type="text" name="username" id="username" placeholder="Username" required>
@@ -26,17 +26,12 @@
             <img th:src="@{images/login_sign_images/phone-call.png}" alt="icon" class="icon">
         </div>
         <div class="cell">
-            <p>If you already have an account <a th:href="@{/login}">click here</a></p>
+            <p>Already have an account?<a th:href="@{/login}">Login</a></p>
         </div>
         
         <div class="cell">
             <button type="submit">Sign Up</button>
         </div>
-        
-
-
     </form>
-    
-    
 </body>
 </html>
