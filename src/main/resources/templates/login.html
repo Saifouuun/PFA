@@ -13,10 +13,12 @@
             <input type="email" name="email" id="email" placeholder="Email" required>
             <img th:src="@{images/login_sign_images/email.png}" alt="icon" class="icon">
         </div>
+        <p th:text="${errorEmail}"></p>
         <div class="cell">
             <input type="password" name="password" id="password" placeholder="Password" required>
             <img th:src="@{images/login_sign_images/padlock.png}" alt="icon" class="icon">
         </div>
+        <p th:text="${errorPassword}"></p>
         <div class="cell">
             <p>Don't have an account?<a th:href="@{/sign}">Sign up</a></p>
         </div>
