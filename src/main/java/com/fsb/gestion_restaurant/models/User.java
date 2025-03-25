@@ -2,6 +2,8 @@ package com.fsb.gestion_restaurant.models;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -27,6 +29,8 @@ public class User {
     private String password;
     @Column(name = "phone")
     private String phone;
+    @Enumerated(EnumType.STRING)
+    private Role role;
     
     public User(String username, String email, String password, String phone) {
         this.username = username;
@@ -35,6 +39,12 @@ public class User {
         this.phone = phone;
     }
     public User(){}
+    public Role getRole() {
+        return role;
+    }
+    public void setRole(Role role) {
+        this.role = role;
+    }
     public Long getId() {
         return id;
     }
