@@ -20,14 +20,14 @@ import com.fsb.gestion_restaurant.repository.UserRepository;
 
 
 @Controller
-@RequestMapping("/sign")
+@RequestMapping("/register")
 public class SignUpController {
     @Autowired
     private UserRepository userRepository;
 
     @GetMapping
-    public String getSignPage(){
-        return "sign_up";
+    public String getRegisterPage(){
+        return "register";
     }
     /*@PostMapping
     public @ResponseBody String createClient(@RequestBody User user){
@@ -52,7 +52,8 @@ public class SignUpController {
         @RequestParam String username, 
         @RequestParam String email, 
         @RequestParam String password, 
-        @RequestParam(required = false) String phone,Model model) {
+        @RequestParam(required = false) String phone,
+        @RequestParam String role,Model model) {
 
     String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
     User newUser = new User();
@@ -60,12 +61,18 @@ public class SignUpController {
     newUser.setPassword(hashedPassword);
     newUser.setPhone(phone);
     newUser.setUsername(username);
-    newUser.setRole(Role.CLIENT);
+    if(role.equalsIgnoreCase("Client")){
+        newUser.setRole(Role.CLIENT);
+    }else{
+        newUser.setRole(Role.OWNER);
+    }
+    
+   
 
     Optional<User> userEntry = userRepository.findByEmail(newUser.getEmail());
     if (userEntry.isPresent()) {
         model.addAttribute("error","Email already existe try another one" );
-        return "sign_up";
+        return "register";
     }
 
     userRepository.save(newUser);
@@ -84,7 +91,7 @@ public class SignUpController {
         Optional<User> userEntry = userRepository.findByEmail(newUser.getEmail());
         System.err.println(userEntry);
         if (userEntry.isPresent()) {
-            return "sign_up";
+            return "register";
         }
         
         userRepository.save(newUser);

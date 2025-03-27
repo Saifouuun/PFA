@@ -41,10 +41,10 @@ public class AuthCntroller {
                 user.setPassword(hashedPassword);
                 userRepository.save(user);
                 /*return ResponseEntity.status(HttpStatus.OK).body("Login successful");*/
-                model.addAttribute("user", user.getUsername());
+                model.addAttribute("user",user.getUsername());
                 session.setAttribute("email", email);
                 
-                return "redirect:/dashboard";
+                return "dashboard";
             }
             
             /*return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Incorret password");*/
@@ -72,6 +72,14 @@ public class AuthCntroller {
         return "redirect:/login";  // Redirect to login page after logout
     }
     
+    @GetMapping("/home")
+    public String getHomePage(){
+        return "home";
+    }
+    @GetMapping("/")
+    public String getRootPage(){
+        return "home";
+    }
     
     
     

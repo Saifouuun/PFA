@@ -1,5 +1,8 @@
 package com.fsb.gestion_restaurant.models;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -7,13 +10,14 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 
 
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class User {
 
 
@@ -31,12 +35,15 @@ public class User {
     private String phone;
     @Enumerated(EnumType.STRING)
     private Role role;
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<Reservation> reservations;
     
     public User(String username, String email, String password, String phone) {
         this.username = username;
         this.email = email;
         this.password = password;
         this.phone = phone;
+
     }
     public User(){}
     public Role getRole() {
