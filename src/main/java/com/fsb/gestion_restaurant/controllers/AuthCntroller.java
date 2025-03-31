@@ -44,7 +44,7 @@ public class AuthCntroller {
                 model.addAttribute("user", user.getUsername());
                 session.setAttribute("email", email);
                 
-                return "redirect:/dashboard";
+                return "redirect:/main";
             }
             
             /*return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Incorret password");*/
@@ -57,14 +57,14 @@ public class AuthCntroller {
         return "login";
 
     }
-    @GetMapping("/dashboard")
+    @GetMapping("/main")
     public String home(HttpSession session, Model model) {
         String email = (String) session.getAttribute("email");
         if (email == null) {
             return "redirect:/login";  // If user is not logged in, redirect to login page
         }
         model.addAttribute("email", email);
-        return "dashboard";  // Return home page
+        return "main";  // Return home page
     }
     @GetMapping("/logout")
     public String logout(HttpSession session) {

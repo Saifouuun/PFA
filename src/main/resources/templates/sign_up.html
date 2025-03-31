@@ -27,6 +27,12 @@
             <input type="text" name="phone" id="phone" placeholder="Phone Number">
             <img th:src="@{images/login_sign_images/phone-call.png}" alt="icon" class="icon">
         </div>
+        <div class="radio-buttons">
+            <input type="radio" name="option" value="owner" required>
+            <label for="admin">Owner</label>
+            <input type="radio" name="option" value="user" required>
+            <label for="user">User</label>
+        </div>
         <div class="cell">
             <p>Already have an account?<a th:href="@{/login}">Login</a></p>
         </div>
