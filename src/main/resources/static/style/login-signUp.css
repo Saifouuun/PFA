@@ -22,7 +22,7 @@ form {
   justify-items: center;
 }
 
-input {
+input:not([type="radio"]) {
   width: 80%;
   padding: 10px;
   padding-left: 40px;

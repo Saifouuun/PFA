@@ -1,6 +1,7 @@
 package com.fsb.gestion_restaurant.models;
 
-import jakarta.persistence.Column;
+import java.sql.Date;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,28 +12,37 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
+
 @Getter
 @Setter
 @Entity
-@Table(name = "commandes")
-public class Commande {
+@Table(name="reservations")
+public class Reservation {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idCommande;
+    private Long id;
 
-    @Column(name = "commandeDetails")
-    private String comDetails;
+    
+
+    private Date dateReservation;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id" , nullable = false)
+    private User user;
 
     @ManyToOne
     @JoinColumn(name = "restaurant_id" , nullable = false)
     private Restaurant restaurant;
 
-    public Commande(Long idCommande, String comDetails,Restaurant restaurant) {
-        this.idCommande = idCommande;
-        this.comDetails = comDetails;
+    public Reservation(User user, Date dateReservation,Restaurant restaurant) {
+        this.user = user;
+        this.dateReservation = dateReservation;
         this.restaurant=restaurant;
     }
-    
+    public Reservation(){}
 
+
+    
 
 }
