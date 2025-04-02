@@ -33,8 +33,8 @@ public class TableController {
         return tableService.createTable(table);
     }
     @GetMapping("/{id}")
-    public Optional<ResTable> getTableById(@PathVariable("id") Long id) {
-        return tableService.getTableById(id);
+    public ResTable getTableById(@PathVariable("id") Long id) {
+        return tableService.getTableById(id).get();
         
     }
 

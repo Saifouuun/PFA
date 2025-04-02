@@ -26,9 +26,9 @@ public class CommandeController {
     public Commande createCommande(@RequestBody Commande commande){
         return commandeService.createCommande(commande);
     }
-    @GetMapping("/{id}")
-    public Optional<Commande> getCommandeByid(@RequestParam Long id){
-        return commandeService.getCommandeById(id);
+    @GetMapping("/get/{id}")
+    public Commande getCommandeByid(@PathVariable Long id){
+        return commandeService.getCommandeById(id).get();
     }
     @PutMapping
     public Commande updateUser(@RequestBody Commande commande) {

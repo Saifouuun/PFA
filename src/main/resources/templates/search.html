@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX Search with Spring Boot and MySQL</title>
+    <style>
+        #results { margin-top: 10px; }
+        .result-item { padding: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Search Items</h1>
+    <input type="text" id="search" placeholder="Search items..." />
+    <div id="results"></div>
+
+    <script>
+        let debounceTimeout;
+
+        document.getElementById("search").addEventListener("input", function() {
+            let query = this.value.trim();
+
+            if (query.length > 2) {  
+                clearTimeout(debounceTimeout);
+                debounceTimeout = setTimeout(() => {
+                    fetch(`/restaurant/search?query=${query}`)
+                        .then(response => response.json())
+                        .then(data => displayResults(data))
+                        .catch(error => console.error("Error fetching data:", error));
+                }, 300);  
+            } else {
+                document.getElementById("results").innerHTML = ''; 
+            }
+        });
+
+        function displayResults(restaurant) {
+            let resultsContainer = document.getElementById("results");
+            resultsContainer.innerHTML = ""; 
+
+            if (restaurant.length > 0) {
+                restaurant.forEach(item => {
+                    let resultDiv = document.createElement("div");
+                    resultDiv.classList.add("result-restaurant");
+                    resultDiv.textContent = restaurant.location;
+                    resultsContainer.appendChild(resultDiv);
+                    let resultDiv2 = document.createElement("div");
+                    resultDiv2.classList.add("result-restaurant");
+                    resultDiv2.textContent = restaurant.nomRestaurant;
+                    resultsContainer.appendChild(resultDiv2);
+
+                });
+            } else {
+                resultsContainer.innerHTML = "No results found.";
+            }
+        }
+    </script>
+</body>
+</html>

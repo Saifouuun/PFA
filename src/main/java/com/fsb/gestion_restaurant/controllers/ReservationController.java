@@ -5,10 +5,11 @@ import java.util.List;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -19,6 +20,7 @@ import com.fsb.gestion_restaurant.repository.UserRepository;
 
 
 @Controller
+@RequestMapping("/reservation")
 public class ReservationController {
 
     @Autowired
@@ -27,7 +29,7 @@ public class ReservationController {
     @Autowired
     UserRepository userRepository;
 
-    @PostMapping("/reservations")
+    @PostMapping
     @ResponseBody
     public String createReservation(@RequestParam Date date,@RequestParam Long userId) {
         User user = userRepository.findById(userId).get();
@@ -38,13 +40,13 @@ public class ReservationController {
         return "reservation saved";
     }
 
-    @GetMapping("/allreservations")
+    @GetMapping("/getAll")
     @ResponseBody
     public List<Reservation> getAllReservations() {
         return reservationRepository.findAll();
     }
 
-    @GetMapping("/reservationsBymail")
+    @GetMapping("/findByEmail")
     @ResponseBody
     public String getReservationByUserId(@RequestParam String email) {
 
