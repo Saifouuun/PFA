@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-align: center;
+            
+        }
+        h1{
+            
+            font-size: 50px;
+            color: #ff0000;
+        } 
+        img{
+            
+            width: 200px;
+            height: 200px;
+            
+            filter: invert(1);
+        }  
+        button{
+            margin-top: 5%;
+            background-color: #48c94d; /* Green */
+            border: none;
+            color: rgb(255, 255, 255);
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 12px;
+            margin-right: 89%;
+            
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <button onclick="history.back()">Go Back</button>
+    </div>
+
+    <div>
+        <img th:src="@{/images/error/error-404.png}" alt="">
+        <h1>Page not found 404</h1>
+    </div>
+    
+</body>
+</html>

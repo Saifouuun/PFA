@@ -14,7 +14,7 @@
     <input type="text" id="search" placeholder="Search items..." />
     <div id="results"></div>
 
-    <script>
+    <!--<script>
         let debounceTimeout;
 
         document.getElementById("search").addEventListener("input", function() {
@@ -53,6 +53,41 @@
                 resultsContainer.innerHTML = "No results found.";
             }
         }
-    </script>
+    </script>-->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $('#search').on('input', function () {
+        let keyword = $(this).val();
+        $.ajax({
+            url: '/restaurant/search',
+            method: 'GET',
+            data: { keyword: keyword },
+            success: function (data) {
+                $('#results').empty();
+                if (data.length === 0) {
+                    $('#results').append('<li>No results found</li>');
+                }
+                if(keyword.length==0){
+                    $('#results').append('');
+                }
+                else {
+                    data.forEach(item => {
+                        $('#results').append(`
+                        <div>
+                            <a href="/restaurant/${item.idRestaurant}">
+                                <li>${item.nomRestaurant}</li>
+                            </a>
+                        </div>
+                        `);
+                    });
+                }
+            },
+            error: function (err) {
+                console.error('Error:', err);
+            }
+        });
+    });
+</script>
 </body>
 </html>

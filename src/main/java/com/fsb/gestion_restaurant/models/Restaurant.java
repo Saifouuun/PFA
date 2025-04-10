@@ -52,9 +52,7 @@ public class Restaurant {
         this.commandes = commandes;
         this.tables = tables;
         this.reservations = reservations;
-        if (owner.getRole().equals("OWNER")) {
-            this.owner= owner;
-        }
+        
     }
     public Restaurant(){}
 

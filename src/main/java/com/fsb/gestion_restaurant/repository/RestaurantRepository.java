@@ -11,5 +11,6 @@ import com.fsb.gestion_restaurant.models.Restaurant;
 public interface RestaurantRepository  extends JpaRepository<Restaurant,Long>{
     List<Restaurant> findByNomRestaurant(String nomRestaurant);
     List<Restaurant> findByNomRestaurantStartingWithIgnoreCase(String prefix);
+    List<Restaurant> findByNomRestaurantStartingWith(String prefix);
 
 }
