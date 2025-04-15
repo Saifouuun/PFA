@@ -2,7 +2,6 @@ package com.fsb.gestion_restaurant.controllers;
 
 
 
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,8 +32,8 @@ public class TableController {
         return tableService.createTable(table);
     }
     @GetMapping("/{id}")
-    public Optional<ResTable> getTableById(@PathVariable("id") Long id) {
-        return tableService.getTableById(id);
+    public ResTable getTableById(@PathVariable("id") Long id) {
+        return tableService.getTableById(id).get();
         
     }
 

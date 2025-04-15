@@ -19,16 +19,30 @@
         <section class="first-section">
             <h1>Order delivery near you</h1>
             <div class="search-bar">
+<<<<<<< HEAD
                 <img th:src="@{/images/login_sign_images/icons8-location-50.png}" alt="icon" class="icon">
                 <input type="text" name="query" placeholder="Search for restaurants">
                 <button type="submit" class="search-button">Search</button>
             </div>
             <p>Or <a th:href="@{/login}">Sign In</a></p>
+=======
+                <img th:src="@{../images/mainPage/icons8-location-50.png}" alt="icon" class="icon">
+                <input type="text" name="query" placeholder="Search for restaurants" id="search">
+                <button type="submit" class="search-button">Search</button>
+            </div>
+            <div id="results"></div>
+            <p>Or <a th:href="@{/login}">Sign In</a></p>
+
+>>>>>>> upstream/main
         </section>
     </main>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
+<<<<<<< HEAD
          $('#search').on('input', function () {
+=======
+        $('#search').on('input', function () {
+>>>>>>> upstream/main
             let keyword = $(this).val();
             $.ajax({
                 url: '/restaurant/search',

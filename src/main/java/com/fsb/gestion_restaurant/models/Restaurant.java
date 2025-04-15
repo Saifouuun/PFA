@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
@@ -26,6 +28,8 @@ public class Restaurant {
 
     private String location;
 
+    private String image;
+
     @OneToMany(mappedBy = "restaurant",cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Menu> menus;
 
@@ -38,15 +42,21 @@ public class Restaurant {
     @OneToMany(mappedBy = "restaurant",cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Reservation> reservations;
 
+    @ManyToOne
+    @JoinColumn(name = "owner" , nullable = false)
+    private User owner;
+
     public Restaurant(String nomRestaurant, String location, List<Menu> menus, List<Commande> commandes,
-        List<ResTable> tables, List<Reservation> reservations) {
+        List<ResTable> tables, List<Reservation> reservations, User owner,String image ) {
         this.nomRestaurant = nomRestaurant;
         this.location = location;
         this.menus = menus;
         this.commandes = commandes;
         this.tables = tables;
         this.reservations = reservations;
+        
     }
+    public Restaurant(){}
 
 
 

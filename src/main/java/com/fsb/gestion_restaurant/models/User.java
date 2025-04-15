@@ -37,6 +37,9 @@ public class User {
     private Role role;
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Reservation> reservations;
+
+    @OneToMany(mappedBy = "owner",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<Restaurant> restauarnts;
     
     public User(String username, String email, String password, String phone) {
         this.username = username;
@@ -82,5 +85,12 @@ public class User {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+    public boolean isOwner(User user) {
+        return user.getRole() == Role.OWNER;
+    }
+    public boolean isClient(User user) {
+        return user.getRole() == Role.CLIENT;
+    }
+        
     
 }

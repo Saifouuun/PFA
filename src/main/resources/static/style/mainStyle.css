@@ -1,5 +1,12 @@
+<<<<<<< HEAD
 body {
     background-image: url("../images/login_sign_images/food-banner.jpeg");
+=======
+
+
+body {
+    background-image: url("../images/mainPage/food-banner.jpeg");
+>>>>>>> upstream/main
     background-size: cover; 
     background-position: center; 
     background-repeat: no-repeat; 
@@ -107,4 +114,37 @@ p {
     font-family: sans-serif;
     margin-left: 20px;
 }
+<<<<<<< HEAD
 
+=======
+.result-item a{
+    text-decoration: none;
+
+
+}
+.result-item {
+    display: flex;
+    align-items: center;
+    justify-content:baseline;
+    width:683px;
+    height: 40px;
+    background-color: white;
+    margin-left: 25px;
+    padding: 10px;
+}
+.result-item span{
+    font-size: large;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+#location{
+    color: gray;
+}
+.result-item:hover{
+    background-color: rgba(255, 255, 255, 0.564);
+    cursor: pointer;
+}
+.icon_ajax{
+   transform: translateX(-5px);
+}
+>>>>>>> upstream/main
