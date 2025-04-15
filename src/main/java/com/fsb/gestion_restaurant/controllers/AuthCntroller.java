@@ -72,13 +72,13 @@ public class AuthCntroller {
         return "redirect:/login";  // Redirect to login page after logout
     }
     
-    @GetMapping("/home")
+    @GetMapping("/main")
     public String getHomePage(){
-        return "home";
+        return "main";
     }
     @GetMapping("/")
     public String getRootPage(){
-        return "home";
+        return "main";
     }
     
     

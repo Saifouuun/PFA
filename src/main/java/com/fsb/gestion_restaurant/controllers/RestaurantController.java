@@ -78,6 +78,18 @@ public class RestaurantController {
     public String search() {
         return "search"; 
     }
+    @GetMapping("/{id}")
+    public String getRestaurantById(@PathVariable Long id,Model model) {
+        Restaurant res = restaurantRepository.findById(id).orElse(null);
+        if(res!=null){
+            model.addAttribute("restaurant", res);
+            return  "restaurant";
+
+        }
+        return  "redirect:/main";
+    }
+   
+    
     
 
 

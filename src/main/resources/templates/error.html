@@ -13,23 +13,27 @@
             padding: 0;
             box-sizing: border-box;
             text-align: center;
+            justify-content: center;
+            justify-items: center;
+            align-items: center;
+           
             
         }
         h1{
             
             font-size: 50px;
-            color: #ff0000;
+            color: #b16f6f;
         } 
         img{
-            
+            margin-top: 30%;
             width: 200px;
             height: 200px;
-            
             filter: invert(1);
         }  
         button{
-            margin-top: 5%;
-            background-color: #48c94d; /* Green */
+            justify-content: center;
+
+            background-color: #0f8213; /* Green */
             border: none;
             color: rgb(255, 255, 255);
             padding: 15px 32px;
@@ -40,19 +44,25 @@
             cursor: pointer;
             border-radius: 12px;
             margin-right: 89%;
+            width: 200px;
             
+        }
+        button:hover{
+            background-color: white; /* Green */
+            color: green;
+            transition: all 0.1s ;
         }
     </style>
 </head>
 <body>
-    <div>
-        <button onclick="history.back()">Go Back</button>
-    </div>
+   
 
     <div>
         <img th:src="@{/images/error/error-404.png}" alt="">
         <h1>Page not found 404</h1>
     </div>
-    
+    <div>
+        <button onclick="history.back()">Go Back</button>
+    </div>
 </body>
 </html>

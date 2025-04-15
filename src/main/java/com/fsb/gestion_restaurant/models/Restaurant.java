@@ -28,6 +28,8 @@ public class Restaurant {
 
     private String location;
 
+    private String image;
+
     @OneToMany(mappedBy = "restaurant",cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Menu> menus;
 
@@ -45,7 +47,7 @@ public class Restaurant {
     private User owner;
 
     public Restaurant(String nomRestaurant, String location, List<Menu> menus, List<Commande> commandes,
-        List<ResTable> tables, List<Reservation> reservations, User owner) {
+        List<ResTable> tables, List<Reservation> reservations, User owner,String image ) {
         this.nomRestaurant = nomRestaurant;
         this.location = location;
         this.menus = menus;

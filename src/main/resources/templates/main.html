@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{./style/mainStyle.css}">
+    <title>Welcome | Eat your meal the best way possible</title>
+</head>
+<body>
+    <header>
+        <nav class="nav-bar">
+            <ul>
+                <button class="login"><a th:href="@{/login}">Log in</a></button>
+                <button class="sign-up"><a th:href="@{/register}">Sign up</a></button>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="first-section">
+            <h1>Order delivery near you</h1>
+            <div class="search-bar">
+                <img th:src="@{../images/mainPage/icons8-location-50.png}" alt="icon" class="icon">
+                <input type="text" name="query" placeholder="Search for restaurants" id="search">
+                <button type="submit" class="search-button">Search</button>
+            </div>
+            <div id="results"></div>
+            <p>Or <a th:href="@{/login}">Sign In</a></p>
+
+        </section>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $('#search').on('input', function () {
+            let keyword = $(this).val();
+            $.ajax({
+                url: '/restaurant/search',
+                method: 'GET',
+                data: { keyword: keyword },
+                success: function (data) {
+                    $('#results').empty();
+                    if (data.length === 0) {
+                        $('#results').append('<li>No results found</li>');
+                    }
+                    if(keyword.length==0){
+                        $('#results').append('');
+                    }
+                    else {
+                        data.forEach(item => {
+                            $('#results').append(`
+                            <div class="result-item"  onclick="window.location.href='/restaurant/${item.id}';">
+                                <img src="../images/mainPage/icons8-location-50.png" alt="icon" class="icon_ajax">
+                                <a href="/restaurant/${item.id}">
+                                    
+                                    <span>${item.nomRestaurant}</span>
+                                    </br>
+                                    <span id="location">${item.location}</span>
+
+                                </a>
+                            </div>
+                            `);
+                        });
+                    }
+                },
+                error: function (err) {
+                    console.error('Error:', err);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
