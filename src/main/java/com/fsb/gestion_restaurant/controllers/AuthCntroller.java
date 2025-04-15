@@ -78,7 +78,7 @@ public class AuthCntroller {
     }
     @GetMapping("/")
     public String getRootPage(){
-        return "home";
+        return "main";
     }
     
     

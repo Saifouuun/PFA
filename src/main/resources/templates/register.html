@@ -30,18 +30,12 @@
         <div class="radio-buttons">
             <input type="radio" name="option" value="owner" required>
             <label for="admin">Owner</label>
-            <input type="radio" name="option" value="user" required>
-            <label for="user">User</label>
+            <input type="radio" name="option" value="client" required>
+            <label for="client">Client</label>
         </div>
         <div class="cell">
             <p>Already have an account?<a th:href="@{/login}">Login</a></p>
         </div>
-       
-            
-            <input type="radio" name="role" value="Client" id="role">Client
-            <input type="radio" name="role" value="Owner" id="role">Owner
-       
-        
         <div class="cell">
             <button type="submit">Sign Up</button>
         </div>
