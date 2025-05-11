@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>update profile</title>
+    <style>
+         header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #2c3e50;
+            color: white;
+            padding: 10px 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+        span {
+            font-size: 18px;
+            font-weight: bold;
+            color: aqua;
+        }
+        h1 {
+            font-size: 24px;
+            color:blueviolet;
+        }
+        h2 {
+            font-size: 20px;
+            color: black;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div th:replace = "fragments/navbar :: header"></div>
+    <h1>Update profile</h1>
+    <form th:action="@{'/profile/'+${user.id}+'/update'}" method="post">
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" th:value="${user.username}" required>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" th:value="${user.email}" required>
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="text" id="password" name="password" th:value="${user.password}" required>
+        </div>
+        <div>
+            <label for="phone">phone</label>
+            <input type="text" id="phone" name="phone" th:value="${user.phone}" required>
+        </div>
+        <div>
+            <button type="submit">Update</button>
+        </div>
+    </form>
+    
+</body>
+</html>

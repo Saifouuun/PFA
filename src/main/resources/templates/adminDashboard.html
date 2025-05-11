@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>admin</title>
+    <style>
+        table {
+            width: 80%;
+            margin: auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #aaa;
+            padding: 8px;
+            text-align: left;
+            background: white;
+        }
+        th {
+            background-color:blue;
+        }
+        h1 {
+            text-align: center;
+            color: whitesmoke;
+        }
+        button {
+            padding: 5px 10px;
+            border-radius: 5px;
+            color: white;
+            
+        }
+        #delete{
+                background: red;
+        }
+        #update{
+                background: green;
+        }
+        
+        a{
+            text-decoration: none;
+            color: white;
+        }
+        #title{
+            color:violet;
+            background-color: black;
+            padding: 10px;
+            width: 100%;
+            margin-top: 0%;
+
+        }
+        body{
+            background:darkslategrey;
+        }
+
+    </style>
+</head>
+<body>
+    <h1 id="title">Admin Dashboard</h1>
+    <h1>Users</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>User Name</th>
+                <th>Email</th>
+                <th>phone</th>
+                <th>password</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.username}"></td>
+                <td th:text="${user.email}"></td>
+                <td th:text="${user.phone}"></td>
+                <td th:text="${user.password}"></td>
+                <td>
+                    <button id="update"><a th:href="@{'/profile/'+${user.id}+'/update'}">update</a></button>
+                    <button id="delete"><a th:href="@{'/profile/'+${user.id}+'/delete/admin'}">delete</a></button>
+                </td>
+                
+            </tr>
+        </tbody>
+    </table>
+    <h1>Restaurants</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Restaurant Name</th>
+                <th>Location</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="restaurant : ${restaurants}">
+                <td th:text="${restaurant.nomRestaurant}"></td>
+                <td th:text="${restaurant.location}"></td>
+                <td>
+                    <button id="update"><a href="">update</a></button>
+                    <button id="delete"><a href="">delete</a></button>
+                </td>
+                
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

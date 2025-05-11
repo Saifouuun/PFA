@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>profile</title>
+    <style>
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #2c3e50;
+            color: white;
+            padding: 10px 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+        span {
+            font-size: 18px;
+            font-weight: bold;
+            color: aqua;
+        }
+        h1 {
+            font-size: 24px;
+            color:blueviolet;
+        }
+        h2 {
+            font-size: 20px;
+            color: black;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div th:replace="fragments/navbar :: header"></div>
+    <main>
+        <div>
+            <h1>Profile</h1>
+            <p><strong>Username:</strong> <span th:text="${user.username}"></span></p>
+            <p><strong>Email:</strong> <span th:text="${user.email}"></span></p>
+            <p><strong>Phone:</strong> <span th:text="${user.phone}"></span></p>
+            
+        </div>
+        <form th:action="@{'/profile/'+${user.id}+'/update'}" method="get">
+            <button type="submit">Update</button>
+        </form>
+        <form th:action="@{'/profile/'+${user.id}+'/delete'}" method="post">
+            <button type="submit">Delete</button>
+        </form>
+    </main>
+    
+
+    
+</body>
+</html>

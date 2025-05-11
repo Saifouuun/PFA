@@ -37,10 +37,15 @@
     </div>
     <div>
         <h2>Menu</h2>
-        <div class="menu" th:each="plat :${restaurant.plats}">
-            <span th:text="${restaurant.nomPlat}"></span>
-            <span th:text="${plat.prix}"></span>
+        <span th:if="${restaurant.menus.size() > 0}">
+        <div class="menu" th:each="menu :${restaurant.menus}">
+            <span th:text="${menu.nomMenu}"></span>
+            
         </div>
+        <span th:unless="${restaurant.menus.size() > 0}">
+            empty menu
+        </span>
+    </span>
     </div>
 
     

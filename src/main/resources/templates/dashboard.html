@@ -4,19 +4,154 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
+    <style>
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #2c3e50;
+            color: white;
+            padding: 10px 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+        span {
+            font-size: 18px;
+            font-weight: bold;
+            color: aqua;
+        }
+        h1 {
+            font-size: 24px;
+            color:blueviolet;
+        }
+        h2 {
+            font-size: 20px;
+            color: black;
+            text-align: center;
+        }
+        .restaurant-block {
+        display: inline-block;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        width: 200px;              
+        text-align: center;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        margin: 8px;
+        padding: 0px;            
+        background-color: #f5f5f5;
+        transition: transform 0.2s;
+    }
+
+.restaurant-block:hover {
+    transform: scale(1.03);
+}
+
+.restaurant-block img {
+    width: 200px;             
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.restaurant-block h3 {
+    font-size: 14px;           
+    margin: 6px 0 4px;
+}
+
+.restaurant-block p {
+    font-size: 12px;     
+    color: #666;
+    margin: 0;
+}
+
+
+    </style>
 </head>
 <body>
+    <header>
+        <h1>Gestion Restaurant</h1>
+        
+        <nav>
+            <ul>
+                <li><span th:text="'Mr. ' + ${user.username}" style="text-transform: capitalize;"></span></li>
+
+<li><a th:href="@{'/profile/' + ${user.id}}">Profile</a></li>
+
+<li><a th:href="@{'/reservations/' + ${user.id}}">Reservations</a></li>
+
+<li><a th:href="@{/logout}">Logout</a></li>
+
+
+            </ul>
+        </nav>
+    </header>
+
     
-    <p>Welcome to the dashboard <span th:text="${user}" style="text-transform: capitalize;"></span></p>
+    
 
 
     
 
 
+    <h2>Restaurants</h2>
+    <div id="restaurants-container"></div>
+ 
 
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+    $.ajax({
+        url: "/restaurant/getall", 
+        method: "GET",
+        success: function(data) {
+            var restaurantsContainer = $("#restaurants-container");
+            restaurantsContainer.empty();  
+            data.forEach(function(restaurant) {
+                
+                var restaurantBlock = `
+                    <div class="restaurant-block" data-id="${restaurant.id}" style="cursor: pointer; border: 1px solid #ddd; padding: 10px; margin: 10px;">
+                        <img src="/images/restaurant/${restaurant.image}" alt="${restaurant.nomRestaurant}" style="width: 100px; height: 100px;">
+                        <h3>${restaurant.nomRestaurant}</h3>
+                        <p>${restaurant.location}</p>
+                    </div>
+                `;
+                restaurantsContainer.append(restaurantBlock);
+            });
 
-    <a th:href="@{/logout}">logout</a>
-    
+            $(".restaurant-block").on("click", function() {
+                var restaurantId = $(this).data("id");
+                window.location.href = `/restaurant/${restaurantId}/getRestaurant`;
+            });
+        },
+        error: function(error) {
+            console.error("Error loading restaurants:", error);
+        }
+    });
+    });
+
+    </script>
 </body>
 </html>
