@@ -3,25 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>navbar</title>
-    
+    <title>Navbar</title>
+    <style>
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(90deg, #2c3e50, #34495e); /* Gradient background */
+            color: white;
+            padding: 15px 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 5px 10px;
+            transition: color 0.3s ease, background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #f1c40f; /* Gold color on hover */
+            background-color: rgba(255, 255, 255, 0.1); /* Subtle background on hover */
+            border-radius: 5px;
+        }
+
+        nav ul li span {
+            font-size: 16px;
+            font-weight: bold;
+            color: #f1c40f; /* Gold color for username */
+        }
+    </style>
 </head>
 <body>
     <div th:fragment="header">
-    <header>
-        <h1>Gestion Restaurant</h1>
-        
-        <nav>
-            <ul>
-                <li><span th:text="'Mr.'+${user.username}" style="text-transform: capitalize;"></span></li>
-                <li><a th:href="@{/profile}">Profile</a></li>
-                <li><a th:href="@{/reservations}">Reservations</a></li>
-                <li><a th:href="@{/logout}">Logout</a></li>
-
-            </ul>
-        </nav>
-    </header>
-   </div>
-    
+        <header>
+            <h1>ResResto</h1>
+            <nav>
+                <ul>
+                    <li><span th:text="'Mr. ' + ${user.username}" style="text-transform: capitalize;"></span></li>
+                    <li><a th:href="@{/profile}">Profile</a></li>
+                    <li><a th:href="@{'/reservations/' + ${user.id}}">Reservations</a></li>
+                    <li><a th:href="@{/logout}">Logout</a></li>
+                </ul>
+            </nav>
+        </header>
+    </div>
 </body>
 </html>

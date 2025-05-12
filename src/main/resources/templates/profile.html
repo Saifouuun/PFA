@@ -3,73 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>profile</title>
+    <title>Profile</title>
     <style>
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #2c3e50;
+            background: linear-gradient(90deg, #2c3e50, #34495e); /* Gradient background */
             color: white;
-            padding: 10px 20px;
+            padding: 15px 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
         }
 
         header h1 {
             margin: 0;
-            font-size: 24px;
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 1px;
         }
 
         nav ul {
             display: flex;
-            gap: 20px;
+            gap: 25px;
             list-style: none;
             margin: 0;
             padding: 0;
         }
 
+        nav ul li {
+            position: relative;
+        }
+
         nav ul li a {
             color: white;
             text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 5px 10px;
+            transition: color 0.3s ease, background-color 0.3s ease;
         }
 
         nav ul li a:hover {
-            text-decoration: underline;
+            color: #f1c40f; /* Gold color on hover */
+            background-color: rgba(255, 255, 255, 0.1); /* Subtle background on hover */
+            border-radius: 5px;
         }
+
+        nav ul li span {
+            font-size: 16px;
+            font-weight: bold;
+            color: #f1c40f; /* Gold color for username */
+        }
+
         span {
             font-size: 18px;
             font-weight: bold;
             color: aqua;
         }
-        h1 {
-            font-size: 24px;
-            color:blueviolet;
-        }
+        
         h2 {
             font-size: 20px;
             color: black;
             text-align: center;
         }
+        main {
+            padding: 20px;
+            max-width: 600px;
+            margin: auto;
+        }
+        
+        .button-container {
+                    display: flex;
+                    gap: 10px; /* Space between buttons */
+                    justify-content: center; /* Center the buttons */
+                    margin-top: 20px;
+        }
+            
+    .button-container button {
+                    padding: 10px 20px;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    font-size: 16px;
+                }
+            
+        .button-container button:first-child {
+                    background-color: #3498db; /* Blue color for the Update button */
+                    color: white;
+                }
+            
+                .button-container button:first-child:hover {
+                    background-color: #c0392b;
+
+             }
+
+        /* Add styles for the profile container */
+        .profile-container {
+            background-color: #f9f9f9; /* Light background color */
+            border: 1px solid #ddd; /* Light border */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            padding: 20px; /* Inner spacing */
+            margin-top: 20px; /* Space from the top */
+            text-align: center; /* Center align text */
+        }
+
+        .profile-container h1 {
+            color: #2c3e50; /* Darker color for the title */
+            margin-bottom: 20px; /* Space below the title */
+        }
+
+        .profile-container p {
+            font-size: 18px; /* Slightly larger font size */
+            color: #555; /* Softer text color */
+            margin: 10px 0; /* Space between paragraphs */
+        }
+
+        .profile-container span {
+            color: #3498db; /* Highlighted color for user details */
+        }
     </style>
 </head>
 <body>
-    <div th:replace="fragments/navbar :: header"></div>
+    <header>
+        <h1>ResResto</h1>
+        <nav>
+            <ul>
+                <li><span th:text="'Mr. ' + ${user.username}" style="text-transform: capitalize;"></span></li>
+                <li><a th:href="@{'/'}">Dashboard</a></li>
+                <li><a th:href="@{'/reservations/' + ${user.id}}">Reservations</a></li>
+                <li><a th:href="@{/logout}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
     <main>
-        <div>
+        <div class="profile-container">
             <h1>Profile</h1>
             <p><strong>Username:</strong> <span th:text="${user.username}"></span></p>
             <p><strong>Email:</strong> <span th:text="${user.email}"></span></p>
             <p><strong>Phone:</strong> <span th:text="${user.phone}"></span></p>
-            
         </div>
-        <form th:action="@{'/profile/'+${user.id}+'/update'}" method="get">
-            <button type="submit">Update</button>
-        </form>
-        <form th:action="@{'/profile/'+${user.id}+'/delete'}" method="post">
-            <button type="submit">Delete</button>
-        </form>
+        <div class="button-container">
+            <form th:action="@{'/profile/'+${user.id}+'/update'}" method="get">
+                <button type="submit">Update</button>
+            </form>
+            <form th:action="@{'/profile/'+${user.id}+'/delete'}" method="post">
+                <button type="submit">Delete</button>
+            </form>
+        </div>
     </main>
-    
-
-    
 </body>
 </html>

@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>update profile</title>
+    <title>Update Profile</title>
     <style>
-         header {
+        header {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -35,46 +35,83 @@
         nav ul li a:hover {
             text-decoration: underline;
         }
-        span {
-            font-size: 18px;
-            font-weight: bold;
-            color: aqua;
-        }
+
         h1 {
             font-size: 24px;
-            color:blueviolet;
-        }
-        h2 {
-            font-size: 20px;
-            color: black;
+            color: blueviolet;
             text-align: center;
+            margin-top: 20px;
+        }
+
+        .form-container {
+            background-color: #f9f9f9; /* Light background color */
+            border: 1px solid #ddd; /* Light border */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            padding: 20px; /* Inner spacing */
+            max-width: 600px; /* Limit width */
+            margin: 20px auto; /* Center the container */
+        }
+
+        .form-container div {
+            margin-bottom: 15px; /* Space between form fields */
+        }
+
+        .form-container label {
+            display: block;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-container input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .form-container button {
+            background-color: #3498db; /* Blue color for the button */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .form-container button:hover {
+            background-color: #2980b9; /* Darker blue on hover */
         }
     </style>
 </head>
 <body>
-    <div th:replace = "fragments/navbar :: header"></div>
-    <h1>Update profile</h1>
-    <form th:action="@{'/profile/'+${user.id}+'/update'}" method="post">
-        <div>
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" th:value="${user.username}" required>
-        </div>
-        <div>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" th:value="${user.email}" required>
-        </div>
-        <div>
-            <label for="password">Password:</label>
-            <input type="text" id="password" name="password" th:value="${user.password}" required>
-        </div>
-        <div>
-            <label for="phone">phone</label>
-            <input type="text" id="phone" name="phone" th:value="${user.phone}" required>
-        </div>
-        <div>
-            <button type="submit">Update</button>
-        </div>
-    </form>
-    
+    <div th:replace="fragments/navbar :: header"></div>
+    <h1>Update Profile</h1>
+    <div class="form-container">
+        <form th:action="@{'/profile/'+${user.id}+'/update'}" method="post">
+            <div>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" th:value="${user.username}" required>
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" th:value="${user.email}" required>
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="text" id="password" name="password" th:value="${user.password}" required>
+            </div>
+            <div>
+                <label for="phone">Phone:</label>
+                <input type="text" id="phone" name="phone" th:value="${user.phone}" required>
+            </div>
+            <div>
+                <button type="submit">Update</button>
+            </div>
+        </form>
+    </div>
 </body>
 </html>
