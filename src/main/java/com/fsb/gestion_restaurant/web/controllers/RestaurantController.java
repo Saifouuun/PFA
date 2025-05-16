@@ -70,7 +70,7 @@ public class RestaurantController {
     @GetMapping("/search")
     @ResponseBody
     public List<Restaurant> searchItems(@RequestParam("keyword") String query) {
-        return restaurantRepository.findByNomRestaurantStartingWith(query); 
+        return restaurantRepository.findByLocationStartingWith(query); 
     }
     @GetMapping("/searchPage")
     public String search() {

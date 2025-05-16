@@ -10,7 +10,7 @@ import com.fsb.gestion_restaurant.dao.models.Restaurant;
 @Repository
 public interface RestaurantRepository  extends JpaRepository<Restaurant,Long>{
     List<Restaurant> findByNomRestaurant(String nomRestaurant);
-    List<Restaurant> findByNomRestaurantStartingWithIgnoreCase(String prefix);
-    List<Restaurant> findByNomRestaurantStartingWith(String prefix);
+    List<Restaurant> findByLocationStartingWithIgnoreCase(String prefix);
+    List<Restaurant> findByLocationStartingWith(String prefix);
 
 }
